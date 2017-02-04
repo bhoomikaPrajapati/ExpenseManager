@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        style="@style/TextRegularSizeSmall"
+        android:id="@+id/action_income"
+        android:checked="true"
+        android:icon="@drawable/add_select"
+        android:title="@string/income"
+        app:showAsAction="ifRoom" />
+    <item
+        style="@style/TextRegularSizeSmall"
+        android:id="@+id/action_expenses"
+        android:checked="false"
+        android:icon="@drawable/remove_icon"
+        android:title="@string/expenses"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        style="@style/TextRegularSizeSmall"
+        android:id="@+id/action_all_transaction"
+        android:checked="false"
+        android:icon="@drawable/history"
+        android:title="All Transaction"
+        app:showAsAction="ifRoom"/>
+
+
+    <item
+        style="@style/TextRegularSizeSmall"
+        android:id="@+id/action_setting"
+        android:checked="false"
+        android:icon="@drawable/setting"
+        android:title="Setting"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

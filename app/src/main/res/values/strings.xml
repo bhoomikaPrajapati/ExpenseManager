@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Expanses Manager</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="no_account_yet_create_one">No account yet? Create one</string>
+    <string name="login">Login</string>
+    <string name="opps_sorry_data_not_available">Data available</string>
+    <string name="income">Income</string>
+    <string name="expenses">Expenses</string>
+    <string name="logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+    <string name="name">Name</string>
+    <string name="income_resource">Income Resource</string>
+    <string name="save">Save</string>
+    <string name="amount">Amount</string>
+    <string name="add_amount">ADD INCOME</string>
+
+
+</resources>

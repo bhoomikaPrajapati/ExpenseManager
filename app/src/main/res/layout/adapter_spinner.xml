@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/textView"
+    style="@style/TextRegularSizeSmall"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="0dp"
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_5sdp"
+    android:drawablePadding="@dimen/_5sdp"
+    android:drawableRight="@drawable/down_arrow"
+    android:background="@drawable/edittext_background"
+    android:textColor="@color/yellow"/>
+

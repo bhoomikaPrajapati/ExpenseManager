@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_black"
+    android:orientation="vertical">
+
+
+    <TextView
+        style="@style/TextRegularSizeMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:paddingBottom="@dimen/_6sdp"
+        android:paddingLeft="@dimen/_12sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="important"
+        android:textColor="@color/yellow" />
+
+
+    <TextView
+        android:id="@+id/tvFutureIncome"
+        style="@style/TextRegularSizeRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:drawableRight="@drawable/right"
+        android:padding="@dimen/_12sdp"
+        android:text="Add Future Income"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:background="@color/gray" />
+
+
+    <TextView
+        android:id="@+id/tvFutureExpenses"
+        style="@style/TextRegularSizeRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:drawableRight="@drawable/right"
+        android:padding="@dimen/_12sdp"
+        android:text="Add Future Expenses"
+        android:textColor="@color/white" />
+
+
+
+    <TextView
+        style="@style/TextRegularSizeMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:paddingBottom="@dimen/_6sdp"
+        android:paddingLeft="@dimen/_12sdp"
+        android:paddingTop="@dimen/_6sdp"
+        android:text="other"
+        android:textColor="@color/yellow" />
+
+
+    <TextView
+        android:id="@+id/tvFeedback"
+        style="@style/TextRegularSizeRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:drawableRight="@drawable/right"
+        android:padding="@dimen/_12sdp"
+        android:text="feedback"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:background="@color/gray" />
+
+
+    <TextView
+        android:id="@+id/tvShareApplication"
+        style="@style/TextRegularSizeRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:drawableRight="@drawable/right"
+        android:padding="@dimen/_12sdp"
+        android:text="Share Application"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/tvInviteFriend"
+        style="@style/TextRegularSizeRegular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:drawableRight="@drawable/right"
+        android:padding="@dimen/_12sdp"
+        android:text="Invite Friends"
+        android:textColor="@color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:background="@color/gray" />
+</LinearLayout>

@@ -1,0 +1,47 @@
+->Android does not support all Java 8 language features. However, the following features are available when developing apps targeting Android 7.0 (API level 24):
+
+1).Default and static interface methods
+2).Lambda expressions (also available on API level 23 and lower)
+
+
+3).Repeatable annotations
+4).Method References (also available on API level 23 and lower)
+5)Type Annotations (also available on API level 23 and lower)
+Note: Note: Type annotation information is available at compile time,
+but not at runtime. Also, the platform supports TYPE in API 24 and below,
+but not ElementType.TYPE_USE or ElementType.TYPE_PARAMETER..
+
+
+
+Enable Java 8 Features and the Jack Toolchain
+In order to use the new Java 8 language features, you need to also use the Jack toolchain. This new Android toolchain compiles Java language sources into Android-readable DEX bytecode, has its own .jack library format, and provides most toolchain features as part of a single tool: repackaging, shrinking, obfuscation and multidex.
+
+Here is a comparison of the two toolchains used to build Android DEX files:
+
+Legacy javac toolchain:
+javac (.java → .class) → dx (.class → .dex)
+New Jack toolchain:
+Jack (.java → .jack → .dex)
+Configure Gradle
+To enable Java 8 language features and Jack for your project, enter the following in your module-level build.gradle file:
+
+android {
+  ...
+  defaultConfig {
+    ...
+    jackOptions {
+      enabled true
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+}
+Known issues
+Instant Run does not currently work with Jack and will be disabled while using the new toolchain.
+
+Because Jack does not generate intermediate class files when compiling an app, tools that depend on these files do not currently work with Jack. Some examples of these tools are:
+
+Lint detectors that operate on class files
+Tools and libraries that require the app’s class files (such as instrumentation tests with JaCoCo)

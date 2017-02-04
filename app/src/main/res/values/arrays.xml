@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="amount_type">
+        <item>Select AmountType</item>
+        <item>Cash</item>
+        <item>Bank(Card)</item>
+    </string-array>
+
+
+    <string-array name="type">
+        <item>\t All Cash Transaction</item>
+        <item> \t All Bank(Card) Transaction</item>
+        <item> \t All Future Income</item>
+        <item> \t All Future Expenses</item>
+    </string-array>
+</resources>
