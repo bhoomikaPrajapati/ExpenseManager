@@ -16,7 +16,7 @@
         android:padding="@dimen/_8sdp" />
 
 
-    <com.demorjjavaandlambdaexpression.activity.CustomSwipeRefreshLayout
+    <com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/black"
             android:overScrollMode="never" />
-    </com.demorjjavaandlambdaexpression.activity.CustomSwipeRefreshLayout>
+    </com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout>
 
 
     <LinearLayout

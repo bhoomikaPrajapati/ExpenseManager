@@ -43,7 +43,7 @@
         app:itemBackground="@color/color_black"
         app:itemIconTint="@drawable/select_tab"
         app:itemTextColor="@drawable/select_tab"
-        app:layout_behavior="com.demorjjavaandlambdaexpression.customviews.BottomNavigationBehavior"
+        app:layout_behavior="com.bhoomika.expensemanager.customviews.BottomNavigationBehavior"
         app:menu="@menu/bottom_navigation_main" />
 
 </RelativeLayout>

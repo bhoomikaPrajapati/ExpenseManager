@@ -8,7 +8,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
     defaultConfig {
-        applicationId "com.demorjjavaandlambdaexpression"
+        applicationId "com.bhoomika.expensemanager"
         minSdkVersion 15
         targetSdkVersion 25
         versionCode 1
@@ -57,7 +57,7 @@ dependencies {
 
 
     compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
+   // compile 'com.android.support.constraint:constraint-layout:1.0.0-beta3'
     compile 'com.android.support:design:25.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'io.reactivex:rxjava:1.1.0'

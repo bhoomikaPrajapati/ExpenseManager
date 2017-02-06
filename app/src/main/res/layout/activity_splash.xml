@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/black"
-    tools:context="com.demorjjavaandlambdaexpression.activity.SplashActivity">
+    tools:context=".activity.SplashActivity">
 
 
     <in.arjsna.passcodeview.PassCodeView

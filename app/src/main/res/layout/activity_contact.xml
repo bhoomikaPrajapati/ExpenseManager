@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
    
-    <com.demorjjavaandlambdaexpression.activity.CustomSwipeRefreshLayout
+    <com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:overScrollMode="never" />
-    </com.demorjjavaandlambdaexpression.activity.CustomSwipeRefreshLayout>
+    </com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout>
 
     <TextView
         android:id="@+id/tvText"
