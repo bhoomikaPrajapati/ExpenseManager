@@ -54,7 +54,7 @@ public class AddFutureIncome extends BaseActivity {
     private void setSpinnerData() {
 
         String[] amountType = getResources().getStringArray(R.array.amount_type);
-        if (amountType != null && amountType.length > 0) {
+        if (amountType.length > 0) {
             this.amountTypeAdapter = new AdapterSelectAmountType(this, amountType);
             spinner.setAdapter(this.amountTypeAdapter);
         }
@@ -74,15 +74,15 @@ public class AddFutureIncome extends BaseActivity {
 
                 int type = spinner.getSelectedItemPosition();
                 if (AppUtils.getText(inputAmount).isEmpty()) {
-                    AppUtils.showValidation(this, "Please Enter Amount ");
+                    AppUtils.showValidation(this, getString(R.string.msg_enter_ammount));
                     return;
                 }
                 if (type == 0) {
-                    AppUtils.showValidation(this, "Please Select Amount Type");
+                    AppUtils.showValidation(this,getString(R.string.msg_select_amount_type));
                 } else {
                     boolean success = Query.futureIncomeTransaction(AppUtils.getText(inputAmount), type, AppUtils.getText(etIncomeDescription), AppUtils.getText(inputDate));
                     if (success) {
-                        AppUtils.showValidation(this, "Your TransactionTable Add Successfully");
+                        AppUtils.showValidation(this, getString(R.string.msg_transaction_added));
                         etIncomeDescription.setText("");
                         inputAmount.setText("");
                         spinner.setSelection(0);

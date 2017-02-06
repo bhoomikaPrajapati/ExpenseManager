@@ -54,10 +54,12 @@ public class AdapterSelectAmountType extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = inflater.inflate(R.layout.adapter_spinner, parent, false);
-        TextView tvAmountType = (TextView) view.findViewById(R.id.textView);
-        tvAmountType.setText(amountType[position]);
-        return view;
+        if (convertView==null){
+            convertView = inflater.inflate(R.layout.adapter_spinner, parent, false);
+            TextView tvAmountType = (TextView) convertView.findViewById(R.id.textView);
+            tvAmountType.setText(amountType[position]);
+        }
+        return convertView;
     }
 
     @Override

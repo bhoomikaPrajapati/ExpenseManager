@@ -47,7 +47,6 @@ public class AllTransactionFragment extends BaseFragment {
     CustomSwipeRefreshLayout swipeRefreshLayout;
 
 
-    private AdapterSelectAmountType adapterSelectAmountType;
     ArrayList<TransactionTable> transactionTableArrayList = new ArrayList<>();
     private AdapterAllTransaction adapterAllTransaction;
     EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
@@ -76,8 +75,8 @@ public class AllTransactionFragment extends BaseFragment {
     private void setSpinnerData() {
 
         String[] amountType = getResources().getStringArray(R.array.type);
-        if (amountType != null && amountType.length > 0) {
-            adapterSelectAmountType = new AdapterSelectAmountType(getActivity(), amountType);
+        if (amountType.length > 0) {
+            AdapterSelectAmountType adapterSelectAmountType = new AdapterSelectAmountType(getActivity(), amountType);
             spinner.setAdapter(adapterSelectAmountType);
         }
 
@@ -96,10 +95,10 @@ public class AllTransactionFragment extends BaseFragment {
                 switch (postion) {
                     //All cash Transaction
                     case 0:
-                        if (Query.getAllCashData() != null && Query.getAllCashData().size() > 0) {
+                        if (Query.getAllCashData().size() > 0) {
                             transactionTableArrayList.clear();
                             transactionTableArrayList.addAll(Query.getAllCashData());
-                            tvTotalBalance.setText("" + Query.totalAmountCash());
+                            tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
                             swipeRefreshLayout.setRefreshing(false);
                             adapterAllTransaction.notifyDataSetChanged();
                         } else {
@@ -110,10 +109,10 @@ public class AllTransactionFragment extends BaseFragment {
                         break;
                     //All Bank Transaction
                     case 1:
-                        if (Query.getAllCashData() != null && Query.getAllBankData().size() > 0) {
+                        if (Query.getAllBankData().size() > 0) {
                             transactionTableArrayList.clear();
                             transactionTableArrayList.addAll(Query.getAllBankData());
-                            tvTotalBalance.setText("" + Query.totalAmountCard());
+                            tvTotalBalance.setText(String.valueOf(Query.totalAmountCard()));
                             swipeRefreshLayout.setRefreshing(false);
                             adapterAllTransaction.notifyDataSetChanged();
                         } else {
@@ -146,7 +145,7 @@ public class AllTransactionFragment extends BaseFragment {
     }
 
     private void getFutureCashData() {
-        if (Query.getAllFutureCashData() != null && Query.getAllFutureCashData().size() > 0) {
+        if (Query.getAllFutureCashData().size() > 0) {
 
             transactionTableArrayList.clear();
             int size = Query.getAllFutureCashData().size();
@@ -160,7 +159,7 @@ public class AllTransactionFragment extends BaseFragment {
                 transactionTableArrayList.add(transactionTable);
             }
 
-            tvTotalBalance.setText("" + Query.totalFutureAmountCash());
+            tvTotalBalance.setText(String.valueOf(Query.totalFutureAmountCash()));
             swipeRefreshLayout.setRefreshing(false);
             adapterAllTransaction.notifyDataSetChanged();
         } else {
@@ -171,7 +170,7 @@ public class AllTransactionFragment extends BaseFragment {
     }
 
     private void getFutureBankData() {
-        if (Query.getAllFutureBankData() != null && Query.getAllFutureBankData().size() > 0) {
+        if (Query.getAllFutureBankData().size() > 0) {
 
             transactionTableArrayList.clear();
             int size = Query.getAllFutureBankData().size();
@@ -185,7 +184,7 @@ public class AllTransactionFragment extends BaseFragment {
                 transactionTableArrayList.add(transactionTable);
             }
 
-            tvTotalBalance.setText("" + Query.totalFutureAmountBank());
+            tvTotalBalance.setText(String.valueOf(Query.totalFutureAmountBank()));
             swipeRefreshLayout.setRefreshing(false);
             adapterAllTransaction.notifyDataSetChanged();
         } else {
@@ -235,9 +234,9 @@ public class AllTransactionFragment extends BaseFragment {
 
     private void setDatafromDataBase() {
 
-        if (Query.getAllCashData() != null && Query.getAllCashData().size() > 0) {
+        if (Query.getAllCashData().size() > 0) {
             transactionTableArrayList.addAll(Query.getAllCashData());
-            tvTotalBalance.setText("" + Query.totalAmountCash());
+            tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
             swipeRefreshLayout.setRefreshing(false);
         } else {
             transactionTableArrayList.clear();

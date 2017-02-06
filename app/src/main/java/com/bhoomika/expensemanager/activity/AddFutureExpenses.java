@@ -79,15 +79,15 @@ public class AddFutureExpenses extends BaseActivity {
 
                 int type = spinner.getSelectedItemPosition();
                 if (AppUtils.getText(inputAmount).isEmpty()) {
-                    AppUtils.showValidation(this, "Please Enter Amount ");
+                    AppUtils.showValidation(this, getString(R.string.msg_enter_ammount));
                     return;
                 }
                 if (type == 0) {
-                    AppUtils.showValidation(this, "Please Select Amount Type");
+                    AppUtils.showValidation(this, getString(R.string.msg_select_amount_type));
                 } else {
                     boolean success = Query.futureExpensesTransaction(AppUtils.getText(inputAmount), type, AppUtils.getText(etIncomeDescription), AppUtils.getText(inputDate));
                     if (success) {
-                        AppUtils.showValidation(this, "Your TransactionTable Add Successfully");
+                        AppUtils.showValidation(this, getString(R.string.msg_transaction_added));
                         etIncomeDescription.setText("");
                         inputAmount.setText("");
                         spinner.setSelection(0);
