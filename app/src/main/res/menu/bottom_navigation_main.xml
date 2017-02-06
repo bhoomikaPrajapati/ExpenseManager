@@ -20,6 +20,7 @@
         style="@style/TextRegularSizeSmall"
         android:id="@+id/action_all_transaction"
         android:checked="false"
+
         android:icon="@drawable/history"
         android:title="All Transaction"
         app:showAsAction="ifRoom"/>

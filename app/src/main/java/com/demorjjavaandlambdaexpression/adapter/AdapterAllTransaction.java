@@ -22,15 +22,11 @@ import butterknife.BindView;
 
 public class AdapterAllTransaction extends BaseRecyclerAdapter<AdapterAllTransaction.DataObjectHolder, TransactionTable> {
 
-
-    private Context context;
-
     private ArrayList<TransactionTable> transactionTableArrayList;
 
     public AdapterAllTransaction(ArrayList<TransactionTable> transactionTableArrayList, Context context) {
         super(transactionTableArrayList);
         this.transactionTableArrayList = transactionTableArrayList;
-        this.context = context;
 
     }
 

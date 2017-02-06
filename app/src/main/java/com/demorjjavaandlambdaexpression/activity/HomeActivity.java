@@ -43,21 +43,15 @@ public class HomeActivity extends BaseActivity {
         ButterKnife.bind(this);
         init();
         setListener();
-
-
     }
 
     private void init() {
         BottomNavigationViewHelper.disableShiftMode(bottomNavigation);
         setBalance(Query.totalAmountCash(), Query.totalAmountCard());
         //Place first fragment
-        replaceFragment(new IncomeFragment(), false, null);
-
-    }
+        replaceFragment(new IncomeFragment(), false, null);}
 
     private void setListener() {
-
-
         bottomNavigation.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     Fragment fragment = null;

@@ -27,7 +27,7 @@ public final class BottomNavigationBehavior<V extends View> extends VerticalScro
     private boolean hidden = false;
     private ViewPropertyAnimatorCompat mOffsetValueAnimator;
     private ViewGroup mTabLayout;
-    private int mSnackbarHeight = -1;
+    private int mSnackBarHeight = -1;
     private boolean scrollingEnabled = true;
     private boolean hideAlongSnackbar = false;
     int[] attrsArray = new int[]{
@@ -185,8 +185,8 @@ public final class BottomNavigationBehavior<V extends View> extends VerticalScro
         @Override
         public void updateSnackbar(CoordinatorLayout parent, View dependency, View child) {
             if (dependency instanceof Snackbar.SnackbarLayout) {
-                if (mSnackbarHeight == -1) {
-                    mSnackbarHeight = dependency.getHeight();
+                if (mSnackBarHeight == -1) {
+                    mSnackBarHeight = dependency.getHeight();
                 }
 
                 int targetPadding = child.getMeasuredHeight();
@@ -209,10 +209,10 @@ public final class BottomNavigationBehavior<V extends View> extends VerticalScro
         @Override
         public void updateSnackbar(CoordinatorLayout parent, View dependency, View child) {
             if (dependency instanceof Snackbar.SnackbarLayout) {
-                if (mSnackbarHeight == -1) {
-                    mSnackbarHeight = dependency.getHeight();
+                if (mSnackBarHeight == -1) {
+                    mSnackBarHeight = dependency.getHeight();
                 }
-                int targetPadding = (mSnackbarHeight +
+                int targetPadding = (mSnackBarHeight +
                         child.getMeasuredHeight());
                 dependency.setPadding(dependency.getPaddingLeft(),
                         dependency.getPaddingTop(), dependency.getPaddingRight(), targetPadding
