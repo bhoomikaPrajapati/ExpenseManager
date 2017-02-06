@@ -38,7 +38,7 @@ public class AddFutureExpenses extends BaseActivity {
     TextView tvSetAlarm;
     @BindView(R.id.spinner)
     Spinner spinner;
-    private AdapterSelectAmountType mAdapterSelectAmountType;
+    private AdapterSelectAmountType amountTypeAdapter;
 
 
     @Override
@@ -60,8 +60,8 @@ public class AddFutureExpenses extends BaseActivity {
 
         String[] amountType = getResources().getStringArray(R.array.amount_type);
         if (amountType != null && amountType.length > 0) {
-            mAdapterSelectAmountType = new AdapterSelectAmountType(this, amountType);
-            spinner.setAdapter(mAdapterSelectAmountType);
+            this.amountTypeAdapter = new AdapterSelectAmountType(this, amountType);
+            spinner.setAdapter(this.amountTypeAdapter);
         }
 
 
