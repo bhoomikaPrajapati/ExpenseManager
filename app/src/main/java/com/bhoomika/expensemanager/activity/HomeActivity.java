@@ -104,7 +104,7 @@ public class HomeActivity extends BaseActivity {
 
     private void setBalance(float cash, float card) {
 
-        tvBalance.setText("Cash balance : " + cash + "    Bank balance : " + card);
+        tvBalance.setText(getString(R.string.lable_cash_balance) + cash + getString(R.string.lable_bank_balance) + card);
     }
 
     @Subscribe

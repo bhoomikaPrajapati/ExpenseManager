@@ -33,7 +33,6 @@ public class ExpensesFragment extends BaseFragment {
     EditText etExpenseDescription;
     @BindView(R.id.tvSave)
     TextView tvSave;
-    private AdapterSelectAmountType adapterSelectAmountType;
 
 
     @Nullable
@@ -57,8 +56,8 @@ public class ExpensesFragment extends BaseFragment {
     private void setSpinnerData() {
 
         String[] amountType = getResources().getStringArray(R.array.amount_type);
-        if (amountType != null && amountType.length > 0) {
-            adapterSelectAmountType = new AdapterSelectAmountType(getActivity(), amountType);
+        if (amountType.length > 0) {
+            AdapterSelectAmountType adapterSelectAmountType = new AdapterSelectAmountType(getActivity(), amountType);
             spinner.setAdapter(adapterSelectAmountType);
         }
 
@@ -83,12 +82,12 @@ public class ExpensesFragment extends BaseFragment {
            int type=spinner.getSelectedItemPosition();
             if(type==0)
             {
-                AppUtils.showValidation(getActivity(),"Please Select Amount Type");
+                AppUtils.showValidation(getActivity(),getString(R.string.msg_enter_ammount));
             }
             else {
                 boolean success = Query.expensesTransaction(AppUtils.getText(inputAmount), type, AppUtils.getText(etExpenseDescription));
                 if(success) {
-                    AppUtils.showValidation(getActivity(), "Your TransactionTable Add Successfully");
+                    AppUtils.showValidation(getActivity(), getString(R.string.msg_transaction_added));
                     etExpenseDescription.setText("");
                     inputAmount.setText("");
                     spinner.setSelection(0);
