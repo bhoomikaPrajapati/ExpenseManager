@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bhoomika.expensemanager.R;
 import com.bhoomika.expensemanager.activity.AddFutureExpenses;
 import com.bhoomika.expensemanager.activity.AddFutureIncome;
+import com.bhoomika.expensemanager.activity.ChangePassword;
 import com.bhoomika.expensemanager.baseclasses.BaseFragment;
 
 import butterknife.BindView;
@@ -18,7 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by bhoomika on 31/1/17.
+  Created by bhoomika on 31/1/17.
  */
 
 public class SettingFragment extends BaseFragment {
@@ -33,6 +34,8 @@ public class SettingFragment extends BaseFragment {
     TextView tvShareApplication;
     @BindView(R.id.tvInviteFriend)
     TextView tvInviteFriend;
+    @BindView(R.id.tvChangePassword)
+    TextView tvChangePassword;
 
 
     @Nullable
@@ -61,12 +64,11 @@ public class SettingFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.tvFutureIncome, R.id.tvFutureExpenses, R.id.tvInviteFriend})
+    @OnClick({R.id.tvFutureIncome, R.id.tvFutureExpenses, R.id.tvInviteFriend,R.id.tvChangePassword})
     public void onClick(View view) {
 
         switch (view.getId()) {
             case R.id.tvInviteFriend:
-
                 break;
 
             case R.id.tvFutureExpenses:
@@ -74,9 +76,11 @@ public class SettingFragment extends BaseFragment {
                 break;
 
             case R.id.tvFutureIncome:
-
                 startActivity(new Intent(getActivity(), AddFutureIncome.class));
+                break;
 
+            case R.id.tvChangePassword:
+                startActivity(new Intent(getActivity(), ChangePassword.class));
                 break;
 
             default:

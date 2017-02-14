@@ -22,6 +22,10 @@
     <string name="msg_transaction_added">Your TransactionTable Add Successfully</string>
     <string name="lable_cash_balance">"Cash balance : "</string>
     <string name="lable_bank_balance">"    Bank balance : "</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
+    <string name="currant_password">Currant Password</string>
+    <string name="change_password">Change Password</string>
 
 
 </resources>

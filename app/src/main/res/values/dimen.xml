@@ -5,4 +5,10 @@
     <dimen name="regular_text" >18sp</dimen>
     <dimen name="medium_text" >20sp</dimen>
     <dimen name="large_text" >24sp</dimen>
+
+    <dimen name="key_text_size">24.0sp</dimen>
+    <dimen name="drawableDimen">30.0dp</dimen>
+    <dimen name="digit_vertical_padding">40.0dp</dimen>
+    <dimen name="digit_horizontal_padding">15.0dp</dimen>
+    <dimen name="key_pad_min_height">300.0dp</dimen>
 </resources>

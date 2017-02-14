@@ -78,6 +78,7 @@ public class HomeActivity extends BaseActivity {
 
                             case R.id.action_setting:
                                fragment=new SettingFragment();
+                                tvBalance.setVisibility(View.GONE);
                                 break;
 
                         }

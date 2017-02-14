@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@android:color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@android:color/black"
-    tools:context=".activity.SplashActivity">
+    >
+    <ImageView
+        android:layout_width="50.0dp"
+        android:layout_height="50.0dp"
+        android:src="@drawable/lock"
+        />
+    <TextView
+        style="@style/TextRegularSizeMedium"
+        android:id="@+id/promptview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter your passcode"
+        android:textSize="18.0sp"
+        android:textColor="@color/yellow"
+        android:gravity="center"
+        android:padding="20.0dp"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
 
-
-    <in.arjsna.passcodeview.PassCodeView
+    <com.bhoomika.expensemanager.baseclasses.PassCodeView
+      style="@style/TextRegularSizeMedium"
         android:id="@+id/pass_code_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,6 +38,7 @@
         app:key_text_size="30.0sp"
         android:padding="25.0dp"
         app:empty_drawable="@drawable/empty_dot"
-        app:filled_drawable="@drawable/filled_dot"/>
-    
-</RelativeLayout>
+        app:filled_drawable="@drawable/filled_dot"
+        />
+
+</LinearLayout>
