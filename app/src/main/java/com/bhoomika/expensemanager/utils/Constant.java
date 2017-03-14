@@ -8,6 +8,7 @@ public class Constant {
 
     public static final String INCOME = "+";
     public static final String EXPENSES = "-";
+    public static final String PASSWORD="password";
 
     public static final int CASH = 1;
     public static final int CARD = 2;

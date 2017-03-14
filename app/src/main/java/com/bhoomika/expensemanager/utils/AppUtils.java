@@ -1,6 +1,8 @@
 package com.bhoomika.expensemanager.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,12 @@ public class AppUtils {
         }
         return date1;
     }
-
+    public static AlertDialog.Builder showDialog(Context context, String title, String message, AlertDialog.Builder... d) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.setCancelable(false);
+        return builder;
+    }
 
 }

@@ -26,6 +26,7 @@
     <string name="new_password">New Password</string>
     <string name="currant_password">Currant Password</string>
     <string name="change_password">Change Password</string>
+    <string name="lbl_ok">OK</string>
 
 
 </resources>

@@ -113,7 +113,7 @@ public class HomeActivity extends BaseActivity {
         setBalance(balanceData.getCash(), balanceData.getCard());
     }
 
-    private Fragment getCurrentFragment() {
+    private Fragment  getCurrentFragment() {
 
         Fragment framgent = getSupportFragmentManager().findFragmentById(R.id.frameContainer);
         return framgent;
