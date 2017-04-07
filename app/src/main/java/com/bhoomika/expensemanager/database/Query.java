@@ -102,10 +102,19 @@ public class Query {
 
     }
 
+    public static int totalCardRecord()
+    {
+        return (int) SQLite.select().from(TransactionTable.class).where(amountType.eq(Constant.CARD)).count();
+    }
+    public static int totalCashRecord()
+    {
+        return (int) SQLite.select().from(TransactionTable.class).where(amountType.eq(Constant.CASH)).count();
+    }
     public static List<TransactionTable> getAllBankData() {
         return SQLite.select()
                 .from(TransactionTable.class)
                 .where(amountType.eq(Constant.CARD))
+
                 .queryList();
 
     }
@@ -136,6 +145,14 @@ public class Query {
         return true;
 
 
+    }
+    public static int totalFCardRecord()
+    {
+        return (int) SQLite.select().from(FTransaction.class).where(amountType.eq(Constant.CARD)).count();
+    }
+    public static int totalFCashRecord()
+    {
+        return (int) SQLite.select().from(FTransaction.class).where(amountType.eq(Constant.CASH)).count();
     }
 
     public static List<FTransaction> getAllFutureCashData() {

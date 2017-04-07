@@ -16,20 +16,17 @@
         android:padding="@dimen/_8sdp" />
 
 
-    <com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_bottom_layout"
-        android:layout_below="@+id/spinner">
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvRecyclerView"
+            android:layout_below="@+id/spinner"
+            android:layout_above="@+id/ll_bottom_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/black"
             android:overScrollMode="never" />
-    </com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout>
+
 
 
     <LinearLayout

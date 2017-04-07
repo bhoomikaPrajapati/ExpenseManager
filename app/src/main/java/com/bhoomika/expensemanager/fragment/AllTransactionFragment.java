@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.bhoomika.expensemanager.database.Query.getAllCashData;
+
 /**
  * Created by bhoomika on 30/1/17.
  */
@@ -43,13 +45,19 @@ public class AllTransactionFragment extends BaseFragment {
     RecyclerView rvRecyclerView;
     @BindView(R.id.tvTotalBalance)
     TextView tvTotalBalance;
-    @BindView(R.id.swipeRefreshLayout)
-    CustomSwipeRefreshLayout swipeRefreshLayout;
+
+
+    int mScreen;
+    int mCashRecord = 1;
+    int mCardRecord = 2;
+    int mFCashRecord = 3;
+    int mFCardRecord = 4;
 
 
     ArrayList<TransactionTable> transactionTableArrayList = new ArrayList<>();
     private AdapterAllTransaction adapterAllTransaction;
     EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
+    private int totalrecord;
 
 
     @Nullable
@@ -95,31 +103,12 @@ public class AllTransactionFragment extends BaseFragment {
                 switch (postion) {
                     //All cash Transaction
                     case 0:
-                        if (Query.getAllCashData().size() > 0) {
-                            transactionTableArrayList.clear();
-                            transactionTableArrayList.addAll(Query.getAllCashData());
-                            tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
-                            swipeRefreshLayout.setRefreshing(false);
-                            adapterAllTransaction.notifyDataSetChanged();
-                        } else {
-                            transactionTableArrayList.clear();
-                            tvTotalBalance.setText("0");
-                            adapterAllTransaction.notifyDataSetChanged();
-                        }
+                        getCashData();
+
                         break;
                     //All Bank Transaction
                     case 1:
-                        if (Query.getAllBankData().size() > 0) {
-                            transactionTableArrayList.clear();
-                            transactionTableArrayList.addAll(Query.getAllBankData());
-                            tvTotalBalance.setText(String.valueOf(Query.totalAmountCard()));
-                            swipeRefreshLayout.setRefreshing(false);
-                            adapterAllTransaction.notifyDataSetChanged();
-                        } else {
-                            transactionTableArrayList.clear();
-                            tvTotalBalance.setText("0");
-                            adapterAllTransaction.notifyDataSetChanged();
-                        }
+                        getCardData();
                         break;
                     //All cash future Transaction
                     case 2:
@@ -134,8 +123,6 @@ public class AllTransactionFragment extends BaseFragment {
             }
 
 
-
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -144,10 +131,45 @@ public class AllTransactionFragment extends BaseFragment {
         });
     }
 
+    private void getCardData() {
+        if (Query.getAllBankData().size() > 0) {
+            mScreen = mCardRecord;
+            totalrecord = Query.totalCardRecord();
+            transactionTableArrayList.clear();
+            transactionTableArrayList.addAll(Query.getAllBankData());
+            tvTotalBalance.setText(String.valueOf(Query.totalAmountCard()));
+
+            adapterAllTransaction.notifyDataSetChanged();
+        } else {
+            transactionTableArrayList.clear();
+            tvTotalBalance.setText("0");
+            adapterAllTransaction.notifyDataSetChanged();
+        }
+
+    }
+
+    private void getCashData() {
+        if (getAllCashData().size() > 0) {
+            mScreen = mCashRecord;
+            totalrecord = Query.totalCashRecord();
+            transactionTableArrayList.clear();
+            transactionTableArrayList.addAll(getAllCashData());
+            tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
+
+            adapterAllTransaction.notifyDataSetChanged();
+        } else {
+            transactionTableArrayList.clear();
+            tvTotalBalance.setText("0");
+            adapterAllTransaction.notifyDataSetChanged();
+        }
+    }
+
     private void getFutureCashData() {
         if (Query.getAllFutureCashData().size() > 0) {
 
             transactionTableArrayList.clear();
+            totalrecord = Query.totalFCashRecord();
+            mScreen = mFCashRecord;
             int size = Query.getAllFutureCashData().size();
             for (int i = 0; i < size; i++) {
                 FTransaction fTransaction = Query.getAllFutureCashData().get(i);
@@ -160,7 +182,7 @@ public class AllTransactionFragment extends BaseFragment {
             }
 
             tvTotalBalance.setText(String.valueOf(Query.totalFutureAmountCash()));
-            swipeRefreshLayout.setRefreshing(false);
+
             adapterAllTransaction.notifyDataSetChanged();
         } else {
             transactionTableArrayList.clear();
@@ -171,9 +193,10 @@ public class AllTransactionFragment extends BaseFragment {
 
     private void getFutureBankData() {
         if (Query.getAllFutureBankData().size() > 0) {
-
+            mScreen = mFCardRecord;
             transactionTableArrayList.clear();
             int size = Query.getAllFutureBankData().size();
+            totalrecord = Query.totalFCardRecord();
             for (int i = 0; i < size; i++) {
                 FTransaction fTransaction = Query.getAllFutureBankData().get(i);
                 TransactionTable transactionTable = new TransactionTable();
@@ -185,7 +208,7 @@ public class AllTransactionFragment extends BaseFragment {
             }
 
             tvTotalBalance.setText(String.valueOf(Query.totalFutureAmountBank()));
-            swipeRefreshLayout.setRefreshing(false);
+
             adapterAllTransaction.notifyDataSetChanged();
         } else {
             transactionTableArrayList.clear();
@@ -196,7 +219,7 @@ public class AllTransactionFragment extends BaseFragment {
 
     private void init() {
 
-        swipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
+
         rvRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapterAllTransaction = new AdapterAllTransaction(transactionTableArrayList, getActivity());
         adapterAllTransaction.setRecycleOnItemClickListener(mRecycleOnItemClickListener);
@@ -207,6 +230,25 @@ public class AllTransactionFragment extends BaseFragment {
                     @Override
                     public void onLoadMore(int page, int totalItemsCount) {
                         endlessRecyclerViewScrollListener.setLoading(true);
+
+                            switch (mScreen) {
+                                case 1:
+                                    getCashData();
+                                    break;
+                                case 2:
+                                    getCardData();
+                                    break;
+                                case 3:
+                                    getFutureCashData();
+                                    break;
+                                case 4:
+                                    getFutureBankData();
+                                    break;
+                                default:
+                                    break;
+
+                            }
+
                         //  setDatafromDataBase();
                         //  TODO get Data From Data Base
                     }
@@ -219,7 +261,7 @@ public class AllTransactionFragment extends BaseFragment {
         @Override
         public void onRefresh() {
             endlessRecyclerViewScrollListener.setLoading(false);
-            swipeRefreshLayout.setRefreshing(true);
+
             //  setDatafromDataBase();
             //  TODO get Data From Data Base
         }
@@ -234,10 +276,10 @@ public class AllTransactionFragment extends BaseFragment {
 
     private void setDatafromDataBase() {
 
-        if (Query.getAllCashData().size() > 0) {
-            transactionTableArrayList.addAll(Query.getAllCashData());
+        if (getAllCashData().size() > 0) {
+            transactionTableArrayList.addAll(getAllCashData());
             tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
-            swipeRefreshLayout.setRefreshing(false);
+
         } else {
             transactionTableArrayList.clear();
             tvTotalBalance.setText("");
