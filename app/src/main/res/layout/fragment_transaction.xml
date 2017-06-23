@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@android:color/black"
     android:orientation="vertical">
 
@@ -56,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:text="50000"
+            tools:text="50000"
             android:textColor="@color/color_black"
             android:textStyle="bold" />
 
