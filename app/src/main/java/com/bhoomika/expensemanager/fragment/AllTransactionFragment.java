@@ -2,63 +2,23 @@ package com.bhoomika.expensemanager.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SimpleItemAnimator;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.bhoomika.expensemanager.R;
-import com.bhoomika.expensemanager.activity.CustomSwipeRefreshLayout;
-import com.bhoomika.expensemanager.adapter.AdapterAllTransaction;
-import com.bhoomika.expensemanager.adapter.AdapterSelectAmountType;
 import com.bhoomika.expensemanager.baseclasses.BaseFragment;
-import com.bhoomika.expensemanager.baseclasses.BaseRecyclerAdapter;
-import com.bhoomika.expensemanager.baseclasses.EndlessRecyclerViewScrollListener;
-import com.bhoomika.expensemanager.database.FTransaction;
-import com.bhoomika.expensemanager.database.Query;
-import com.bhoomika.expensemanager.database.TransactionTable;
-import com.bhoomika.expensemanager.utils.AppUtils;
 
-import java.util.ArrayList;
-
-import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.bhoomika.expensemanager.database.Query.getAllCashData;
 
 /**
  * Created by bhoomika on 30/1/17.
  */
 
 public class AllTransactionFragment extends BaseFragment {
-
-
-    @BindView(R.id.spinner)
-    Spinner spinner;
-    @BindView(R.id.rvRecyclerView)
-    RecyclerView rvRecyclerView;
-    @BindView(R.id.tvTotalBalance)
-    TextView tvTotalBalance;
-
-
-    int mScreen;
-    int mCashRecord = 1;
-    int mCardRecord = 2;
-    int mFCashRecord = 3;
-    int mFCardRecord = 4;
-
-
-    ArrayList<TransactionTable> transactionTableArrayList = new ArrayList<>();
-    private AdapterAllTransaction adapterAllTransaction;
-    EndlessRecyclerViewScrollListener endlessRecyclerViewScrollListener;
-    private int totalrecord;
-
 
     @Nullable
     @Override
@@ -73,65 +33,31 @@ public class AllTransactionFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         init();
-        setLitener();
-        setSpinnerData();
-        setDatafromDataBase();
-
     }
 
+    private void init() {
+        AllCashTransactionFragment allCashTransactionFragment = new AllCashTransactionFragment();
+        replaceFragment(allCashTransactionFragment, true, null);
+    }
 
-    private void setSpinnerData() {
+    public void replaceFragment(Fragment fragment, boolean addToBackStack, Bundle bundle) {
 
-        String[] amountType = getResources().getStringArray(R.array.type);
-        if (amountType.length > 0) {
-            AdapterSelectAmountType adapterSelectAmountType = new AdapterSelectAmountType(getActivity(), amountType);
-            spinner.setAdapter(adapterSelectAmountType);
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.rlContainer, fragment, fragment.getClass().getSimpleName());
+        if (addToBackStack) {
+            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         }
-
-
+        if (bundle != null) {
+            fragment.setArguments(bundle);
+        }
+        fragmentTransaction.commit();
     }
 
 
-    private void setLitener() {
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View v,
-                                       int postion, long arg3) {
-
-                switch (postion) {
-                    //All cash Transaction
-                    case 0:
-                        getCashData();
-
-                        break;
-                    //All Bank Transaction
-                    case 1:
-                        getCardData();
-                        break;
-                    //All cash future Transaction
-                    case 2:
-                        getFutureCashData();
-                        break;
-
-                    case 3:
-                        getFutureBankData();
-                        break;
-                }
-
-            }
 
 
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
-
-            }
-        });
-    }
-
-    private void getCardData() {
+ /*   private void getCardData() {
         if (Query.getAllBankData().size() > 0) {
             mScreen = mCardRecord;
             totalrecord = Query.totalCardRecord();
@@ -148,21 +74,7 @@ public class AllTransactionFragment extends BaseFragment {
 
     }
 
-    private void getCashData() {
-        if (getAllCashData().size() > 0) {
-            mScreen = mCashRecord;
-            totalrecord = Query.totalCashRecord();
-            transactionTableArrayList.clear();
-            transactionTableArrayList.addAll(getAllCashData());
-            tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
 
-            adapterAllTransaction.notifyDataSetChanged();
-        } else {
-            transactionTableArrayList.clear();
-            tvTotalBalance.setText("0");
-            adapterAllTransaction.notifyDataSetChanged();
-        }
-    }
 
     private void getFutureCashData() {
         if (Query.getAllFutureCashData().size() > 0) {
@@ -219,48 +131,18 @@ public class AllTransactionFragment extends BaseFragment {
 
     private void init() {
 
-
         rvRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapterAllTransaction = new AdapterAllTransaction(transactionTableArrayList, getActivity());
+        adapterAllTransaction = new AdapterAllTransaction(rvRecyclerView, transactionTableArrayList, getActivity());
         adapterAllTransaction.setRecycleOnItemClickListener(mRecycleOnItemClickListener);
         ((SimpleItemAnimator) rvRecyclerView.getItemAnimator()).setSupportsChangeAnimations(false);
         rvRecyclerView.setAdapter(adapterAllTransaction);
-        endlessRecyclerViewScrollListener =
-                new EndlessRecyclerViewScrollListener((LinearLayoutManager) rvRecyclerView.getLayoutManager()) {
-                    @Override
-                    public void onLoadMore(int page, int totalItemsCount) {
-                        endlessRecyclerViewScrollListener.setLoading(true);
 
-                            switch (mScreen) {
-                                case 1:
-                                    getCashData();
-                                    break;
-                                case 2:
-                                    getCardData();
-                                    break;
-                                case 3:
-                                    getFutureCashData();
-                                    break;
-                                case 4:
-                                    getFutureBankData();
-                                    break;
-                                default:
-                                    break;
-
-                            }
-
-                        //  setDatafromDataBase();
-                        //  TODO get Data From Data Base
-                    }
-                }.setVisibleThreshold(10);
-        rvRecyclerView.addOnScrollListener(endlessRecyclerViewScrollListener);
     }
 
 
     private SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
         @Override
         public void onRefresh() {
-            endlessRecyclerViewScrollListener.setLoading(false);
 
             //  setDatafromDataBase();
             //  TODO get Data From Data Base
@@ -274,20 +156,8 @@ public class AllTransactionFragment extends BaseFragment {
                 }
             };
 
-    private void setDatafromDataBase() {
 
-        if (getAllCashData().size() > 0) {
-            transactionTableArrayList.addAll(getAllCashData());
-            tvTotalBalance.setText(String.valueOf(Query.totalAmountCash()));
-
-        } else {
-            transactionTableArrayList.clear();
-            tvTotalBalance.setText("");
-        }
-
-
-    }
-
+*/
 
 }
 

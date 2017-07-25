@@ -87,7 +87,7 @@ public class HomeActivity extends BaseActivity {
                             if (!currentFragment.getClass()
                                     .getSimpleName()
                                     .equalsIgnoreCase(fragment.getClass().getSimpleName())) {
-                                getSupportFragmentManager().popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                                /*getSupportFragmentManager().popBackStackImmediate(0, FragmentManager.POP_BACK_STACK_INCLUSIVE);*/
                                 replaceFragment(fragment, true, null);
                             }
 

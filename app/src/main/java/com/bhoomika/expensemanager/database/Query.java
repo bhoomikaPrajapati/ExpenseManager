@@ -2,6 +2,7 @@ package com.bhoomika.expensemanager.database;
 
 import com.bhoomika.expensemanager.utils.Constant;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.Date;
 import java.util.List;
@@ -102,14 +103,16 @@ public class Query {
 
     }
 
-    public static int totalCardRecord()
-    {
+    public static int totalCardRecord() {
         return (int) SQLite.select().from(TransactionTable.class).where(amountType.eq(Constant.CARD)).count();
     }
-    public static int totalCashRecord()
-    {
-        return (int) SQLite.select().from(TransactionTable.class).where(amountType.eq(Constant.CASH)).count();
+
+    public static int totalCashRecord() {
+      //  return (int) SQLite.select().from(TransactionTable.class).where(amountType.eq(Constant.CASH)).count();
+        return (int)  new Select().from(TransactionTable.class).where(amountType.eq(Constant.CASH)).count();
+       // int count = (int) new Select().from(Table.class).count();
     }
+
     public static List<TransactionTable> getAllBankData() {
         return SQLite.select()
                 .from(TransactionTable.class)
@@ -146,12 +149,12 @@ public class Query {
 
 
     }
-    public static int totalFCardRecord()
-    {
+
+    public static int totalFCardRecord() {
         return (int) SQLite.select().from(FTransaction.class).where(amountType.eq(Constant.CARD)).count();
     }
-    public static int totalFCashRecord()
-    {
+
+    public static int totalFCashRecord() {
         return (int) SQLite.select().from(FTransaction.class).where(amountType.eq(Constant.CASH)).count();
     }
 

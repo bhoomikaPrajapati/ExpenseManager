@@ -8,7 +8,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 
 /**
- * Created by  bhoomika on 19/12/16.
+ Created by  bhoomika on 19/12/16.
  */
 public abstract class BaseRecyclerAdapter<T extends BaseRecyclerAdapter.ViewHolder, M>
         extends RecyclerView.Adapter<T> {
