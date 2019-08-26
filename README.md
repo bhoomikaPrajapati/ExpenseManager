@@ -1,7 +1,7 @@
 # ExpenseManager
 * DBFlow Database Operation
-*Insert
-*Update
-*Delete
-*Bottom Navigation
+* Insert
+* Update
+* Delete
+* Bottom Navigation
 
